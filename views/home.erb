@@ -141,62 +141,33 @@
           </button>
         </div>
       </div>
+
       <div class="panel panel-primary">
         <div class="panel-heading">
           <h3 class="panel-title">
             <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
-            Teams <span class="badge pull-right">317 teams</span>
+            Teams <span class="badge pull-right"><%= @teams.count %> Teams</span>
           </h3>
         </div>
         <ul class="list-group">
+          <% @teams.each do |team| %>
           <li class="list-group-item">
             <div class="media">
               <div class="media-left">
                 <a href="#">
-                  <img class="media-object img-rounded" src="https://raw.githubusercontent.com/tiy-tpa-ruby/bootstrap-design/master/public/assets/images//dartboard.png" width="64" height="64">
+                  <img class="media-object img-rounded" src=<%= team.image_url %> width="64" height="64">
                 </a>
               </div>
               <div class="media-body">
                 <h4 class="media-heading">
-                  Tampa Dart Dynamos
-                  <span class="pull-right badge">8 players</span>
+                  <%= team.name %>
+                  <span class="pull-right badge"><%= team.players.count %> players</span>
                 </h4>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                <%= team.description %>
               </div>
             </div>
           </li>
-          <li class="list-group-item">
-            <div class="media">
-              <div class="media-left">
-                <a href="#">
-                  <img class="media-object img-rounded" src="https://raw.githubusercontent.com/tiy-tpa-ruby/bootstrap-design/master/public/assets/images//pingpong.jpg" width="64" height="64">
-                </a>
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading">
-                  St Pete Ping Pong Power House
-                  <span class="pull-right badge">6 players</span>
-                </h4>
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-              </div>
-            </div>
-          </li>
-          <li class="list-group-item">
-            <div class="media">
-              <div class="media-left">
-                <a href="#">
-                  <img class="media-object img-rounded" src="https://raw.githubusercontent.com/tiy-tpa-ruby/bootstrap-design/master/public/assets/images//golf.jpg" width="64" height="64">
-                </a>
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading">
-                  Orlando Golf Gang
-                  <span class="pull-right badge">6 players</span>
-                </h4>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </div>
-            </div>
-          </li>
+          <% end %>
         </ul>
         <div class="panel-footer">
           <nav aria-label="Page navigation" class="text-center">
@@ -221,6 +192,7 @@
           </nav>
         </div>
       </div>
+
       <div class="panel panel-primary">
         <div class="panel-heading">
           <h3 class="panel-title">
