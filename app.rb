@@ -39,17 +39,18 @@ class Membership < ActiveRecord::Base
 end
 
 class Game < ActiveRecord::Base
-  belongs_to :away_team_id, class_name: 'Team'
-  belongs_to :home_team_id, class_name: 'Team'
+  belongs_to :away_team_id, class_name: 'Team', foreign_key: 'away_team_id'
+  belongs_to :home_team_id, class_name: 'Team', foreign_key: 'home_team_id'
 end
 
 get '/' do
   @teams = Team.all
+  @games = Game.all
   erb :home
 end
 
 get '/games' do
   @games = Game.all
-
+  @teams = Team.all
   erb :game
 end

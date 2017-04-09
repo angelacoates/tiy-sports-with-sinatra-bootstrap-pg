@@ -210,24 +210,14 @@
              </tr>
           </thead>
           <tbody>
+            <% @games.each do |game| %>
             <tr class='success'>
-              <th scope='row'>1</th>
-              <td>Tampa Dart Dynamos</td>
-              <td>Buffalo BullsEyes</td>
-              <td>20-17</td>
+              <th scope='row'> <%= game.id %> </th>
+              <td> <%= game.home_team_id.name %> </td>
+              <td> <%= game.away_team_id.name %> </td>
+              <td><%= game.home_team_score %>-<%= game.away_team_score%></td>
             </tr>
-            <tr>
-              <th scope='row'>2</th>
-              <td>St Pete Ping Pong Power House</td>
-              <td>Philly Paddlers</td>
-              <td>18-12</td>
-            </tr>
-             <tr>
-               <th scope='row'>3</th>
-               <td>Orlando Golf Gang</td>
-               <td>Portland Putters</td>
-               <td>2-1</td>
-             </tr>
+            <% end %>
           </tbody>
         </table>
       </div>
