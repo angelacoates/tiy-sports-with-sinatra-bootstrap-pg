@@ -24,6 +24,7 @@ class Team < ActiveRecord::Base
   self.primary_key = "id"
   has_many :memberships
   has_many :players, through: :memberships
+  has_many :games
 end
 
 class Player < ActiveRecord::Base
@@ -37,8 +38,18 @@ class Membership < ActiveRecord::Base
   belongs_to :player
 end
 
+class Game < ActiveRecord::Base
+  belongs_to :away_team_id, class_name: 'Team'
+  belongs_to :home_team_id, class_name: 'Team'
+end
+
 get '/' do
   @teams = Team.all
   erb :home
+end
 
+get '/games' do
+  @games = Game.all
+
+  erb :game
 end
